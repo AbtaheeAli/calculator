@@ -21,7 +21,7 @@ function App() {
   }
 
   const setNumberFromBelow = (event) => {
-    if (firstNumber === parseInt(initialValue)) {
+    if (firstNumber === parseFloat(initialValue)) {
       setFirstNumber(event)
     } else {
       const numberFromBelow = isNaN(firstNumber) ? '' : firstNumber
@@ -40,19 +40,19 @@ function App() {
     }
     switch (operation) {
       case '/':
-        setPreviousValue(parseInt(previousValue) / parseInt(firstNumber))
+        setPreviousValue(parseFloat(previousValue) / parseFloat(firstNumber))
         setAfterOp()
         break
       case '*':
-        setPreviousValue(parseInt(previousValue) * parseInt(firstNumber))
+        setPreviousValue(parseFloat(previousValue) * parseFloat(firstNumber))
         setAfterOp()
         break
       case '-':
-        setPreviousValue(parseInt(previousValue) - parseInt(firstNumber))
+        setPreviousValue(parseFloat(previousValue) - parseFloat(firstNumber))
         setAfterOp()
         break
       case '+':
-        setPreviousValue(parseInt(previousValue) + parseInt(firstNumber))
+        setPreviousValue(parseFloat(previousValue) + parseFloat(firstNumber))
         setAfterOp()
         break
       default:
@@ -73,7 +73,7 @@ function App() {
               : firstNumber}
           </div>
           <div className="buttons">
-            <button className="button c" onClick={() => clearAll()} value="">
+            <button className="button c " onClick={() => clearAll()} value="">
               AC
             </button>
             <button className="button fn">&#177;</button>
@@ -160,7 +160,13 @@ function App() {
             >
               0
             </button>
-            <button className="button">.</button>
+            <button
+              className="button"
+              onClick={(event) => setNumberFromBelow(event.target.value)}
+              value="."
+            >
+              .
+            </button>
             <button
               className="button op"
               onClick={(event) => getCalculation(operation)}
