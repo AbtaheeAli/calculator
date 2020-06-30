@@ -34,13 +34,44 @@ function App() {
     setOperation('')
   }
 
-  const setCalculation
+  const getCalculation = (operation) => {
+    if (firstNumber === '') {
+      setFirstNumber('0')
+    }
+    switch (operation) {
+      case '/':
+        setPreviousValue(parseInt(previousValue) / parseInt(firstNumber))
+        setAfterOp()
+        break
+      case '*':
+        setPreviousValue(parseInt(previousValue) * parseInt(firstNumber))
+        setAfterOp()
+        break
+      case '-':
+        setPreviousValue(parseInt(previousValue) - parseInt(firstNumber))
+        setAfterOp()
+        break
+      case '+':
+        setPreviousValue(parseInt(previousValue) + parseInt(firstNumber))
+        setAfterOp()
+        break
+      default:
+        break
+    }
+  }
 
   return (
     <body>
       <main>
         <div className="calculator">
-          <div className="display">{firstNumber}</div>
+          <div className="display">
+            {''}
+            {firstNumber !== ''
+              ? firstNumber
+              : '' === operation
+              ? previousValue
+              : firstNumber}
+          </div>
           <div className="buttons">
             <button className="button c" onClick={() => clearAll()} value="">
               AC
@@ -130,7 +161,11 @@ function App() {
               0
             </button>
             <button className="button">.</button>
-            <button className="button op" onClick={() => setOperationType('=')}>
+            <button
+              className="button op"
+              onClick={(event) => getCalculation(operation)}
+              value="="
+            >
               &#61;
             </button>
           </div>
