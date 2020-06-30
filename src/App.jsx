@@ -1,19 +1,40 @@
 import React, { useState } from 'react'
 
 function App() {
+  const initialValue = 0
   const [firstNumber, setFirstNumber] = useState(0)
   const [operation, setOperation] = useState('')
   const [previousValue, setPreviousValue] = useState()
-  console.log(operation)
 
-  const setValueFromButton = (event) => setFirstNumber(event)
-  const setOperationType = (type) => setOperation(type)
+  const setOperationType = (type) => {
+    if (!previousValue) {
+      setPreviousValue(firstNumber)
+      setFirstNumber('')
+    }
+    setOperation(type)
+  }
 
   const clearAll = () => {
     setFirstNumber(0)
     setOperation('')
     setPreviousValue()
   }
+
+  const setNumberFromBelow = (event) => {
+    if (firstNumber === parseInt(initialValue)) {
+      setFirstNumber(event)
+    } else {
+      const numberFromBelow = isNaN(firstNumber) ? '' : firstNumber
+      setFirstNumber(numberFromBelow + event)
+    }
+  }
+
+  const setAfterOp = () => {
+    setFirstNumber('')
+    setOperation('')
+  }
+
+  const setCalculation
 
   return (
     <body>
@@ -31,21 +52,21 @@ function App() {
             </button>
             <button
               className="button"
-              onClick={(event) => setValueFromButton(event.target.value)}
+              onClick={(event) => setNumberFromBelow(event.target.value)}
               value="7"
             >
               7
             </button>
             <button
               className="button"
-              onClick={(event) => setValueFromButton(event.target.value)}
+              onClick={(event) => setNumberFromBelow(event.target.value)}
               value="8"
             >
               8
             </button>
             <button
               className="button"
-              onClick={(event) => setValueFromButton(event.target.value)}
+              onClick={(event) => setNumberFromBelow(event.target.value)}
               value="9"
             >
               9
@@ -55,21 +76,21 @@ function App() {
             </button>
             <button
               className="button"
-              onClick={(event) => setValueFromButton(event.target.value)}
+              onClick={(event) => setNumberFromBelow(event.target.value)}
               value="4"
             >
               4
             </button>
             <button
               className="button"
-              onClick={(event) => setValueFromButton(event.target.value)}
+              onClick={(event) => setNumberFromBelow(event.target.value)}
               value="5"
             >
               5
             </button>
             <button
               className="button"
-              onClick={(event) => setValueFromButton(event.target.value)}
+              onClick={(event) => setNumberFromBelow(event.target.value)}
               value="6"
             >
               6
@@ -79,21 +100,21 @@ function App() {
             </button>
             <button
               className="button"
-              onClick={(event) => setValueFromButton(event.target.value)}
+              onClick={(event) => setNumberFromBelow(event.target.value)}
               value="1"
             >
               1
             </button>
             <button
               className="button"
-              onClick={(event) => setValueFromButton(event.target.value)}
+              onClick={(event) => setNumberFromBelow(event.target.value)}
               value="2"
             >
               2
             </button>
             <button
               className="button"
-              onClick={(event) => setValueFromButton(event.target.value)}
+              onClick={(event) => setNumberFromBelow(event.target.value)}
               value="3"
             >
               3
@@ -103,7 +124,7 @@ function App() {
             </button>
             <button
               className="button x2"
-              onClick={(event) => setValueFromButton(event.target.value)}
+              onClick={(event) => setNumberFromBelow(event.target.value)}
               value="0"
             >
               0
