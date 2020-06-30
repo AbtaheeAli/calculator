@@ -73,11 +73,10 @@ function App() {
               : firstNumber}
           </div>
           <div className="buttons">
-            <button className="button c" onClick={() => clearAll()} value="">
+            <button className="button c x3" onClick={() => clearAll()} value="">
               AC
             </button>
-            <button className="button fn"></button>
-            <button className="button fn"></button>
+
             <button className="button op" onClick={() => setOperationType('/')}>
               &#247;
             </button>

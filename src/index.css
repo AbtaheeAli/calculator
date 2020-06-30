@@ -58,9 +58,10 @@ main {
   background-color: #508991;
 }
 
-.button.c {
+.button.c.x3 {
   background-color: #508991;
   color: #5b2333;
+  grid-column: span 3;
 }
 
 .button:hover {
