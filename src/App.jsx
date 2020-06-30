@@ -3,14 +3,17 @@ import React, { useState } from 'react'
 function App() {
   const [firstNumber, setFirstNumber] = useState(0)
   const [operation, setOperation] = useState('')
-
-  const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-
+  const [previousValue, setPreviousValue] = useState()
   console.log(operation)
 
   const setValueFromButton = (event) => setFirstNumber(event)
-
   const setOperationType = (type) => setOperation(type)
+
+  const clearAll = () => {
+    setFirstNumber(0)
+    setOperation('')
+    setPreviousValue()
+  }
 
   return (
     <body>
@@ -18,7 +21,9 @@ function App() {
         <div className="calculator">
           <div className="display">{firstNumber}</div>
           <div className="buttons">
-            <button className="button c">AC</button>
+            <button className="button c" onClick={() => clearAll()} value="">
+              AC
+            </button>
             <button className="button fn">&#177;</button>
             <button className="button fn">&#37;</button>
             <button className="button op" onClick={() => setOperationType('/')}>
