@@ -77,6 +77,10 @@ main {
   background: #E0B612;
 }
 
+.button.c.x3:hover {
+  background: #E0B612;
+}
+
 .button:nth-last-child(3) {
   border-bottom-left-radius: 8px;
 }
